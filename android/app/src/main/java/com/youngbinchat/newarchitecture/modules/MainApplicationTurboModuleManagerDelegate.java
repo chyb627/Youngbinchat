@@ -1,4 +1,4 @@
-package com.youngbinchat.newarchitecture.modules;
+package com.chabiri.youngbinchat.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

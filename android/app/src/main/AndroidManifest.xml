@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.youngbinchat">
+  package="com.chabiri.youngbinchat">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

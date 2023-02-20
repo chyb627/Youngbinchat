@@ -1,4 +1,4 @@
-package com.youngbinchat;
+package com.chabiri.youngbinchat;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

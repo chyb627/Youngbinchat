@@ -1,4 +1,4 @@
-package com.youngbinchat.newarchitecture;
+package com.chabiri.youngbinchat.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.youngbinchat.BuildConfig;
-import com.youngbinchat.newarchitecture.components.MainComponentsRegistry;
-import com.youngbinchat.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.chabiri.youngbinchat.BuildConfig;
+import com.chabiri.youngbinchat.newarchitecture.components.MainComponentsRegistry;
+import com.chabiri.youngbinchat.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
