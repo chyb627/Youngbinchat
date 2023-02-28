@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
-import { Chat, Collections, User } from '../types/types';
+import { Chat, Collections, FirestoreMessageData, Message, User } from '../types/types';
 import _ from 'lodash';
 
 const getChatKey = (userIds: string[]) => {
@@ -10,6 +10,8 @@ const getChatKey = (userIds: string[]) => {
 const useChat = (userIds: string[]) => {
   const [chat, setChat] = useState<Chat | null>();
   const [loadingChat, setLoadingChat] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [sending, setSending] = useState(false);
 
   const loadChat = useCallback(async () => {
     try {
@@ -55,9 +57,46 @@ const useChat = (userIds: string[]) => {
     loadChat();
   }, [loadChat]);
 
+  const sendMessage = useCallback(
+    async (text: string, user: User) => {
+      if (chat?.id == null) {
+        throw new Error('Chat is not loaded');
+      }
+      try {
+        setSending(true);
+        const data: FirestoreMessageData = {
+          text: text,
+          user: user,
+          createdAt: new Date(),
+        };
+
+        const doc = await firestore()
+          .collection(Collections.CHATS)
+          .doc(chat?.id)
+          .collection(Collections.MESSAGES)
+          .add(data);
+
+        setMessages((prevMessages) =>
+          prevMessages.concat([
+            {
+              id: doc.id,
+              ...data,
+            },
+          ]),
+        );
+      } finally {
+        setSending(false);
+      }
+    },
+    [chat?.id],
+  );
+
   return {
     chat,
     loadingChat,
+    sendMessage,
+    messages,
+    sending,
   };
 };
 
