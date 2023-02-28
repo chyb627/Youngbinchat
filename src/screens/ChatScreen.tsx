@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Message from '../components/Message';
 import Screen from '../components/Screen';
 import AuthContext from '../context/AuthContext';
 import useChat from '../hooks/useChat';
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
   },
   messageList: {
     flex: 1,
+    marginVertical: 20,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -81,6 +83,9 @@ const styles = StyleSheet.create({
   sendIcon: {
     color: Colors.WHITE,
     fontSize: 18,
+  },
+  messageSeparator: {
+    height: 8,
   },
 });
 
@@ -133,13 +138,15 @@ const ChatScreen = () => {
           data={messages}
           renderItem={({ item: message }) => {
             return (
-              <View>
-                <Text>{message.user.name}</Text>
-                <Text>{message.text}</Text>
-                <Text>{message.createdAt.toISOString()}</Text>
-              </View>
+              <Message
+                name={message.user.name}
+                text={message.text}
+                createdAt={message.createdAt}
+                isOtherMessage={message.user.userId !== me?.userId}
+              />
             );
           }}
+          ItemSeparatorComponent={() => <View style={styles.messageSeparator} />}
         />
 
         <View style={styles.inputContainer}>
@@ -161,7 +168,7 @@ const ChatScreen = () => {
         </View>
       </View>
     );
-  }, [chat, messages, onChangeText, onPressSendButton, sendDisabled, text]);
+  }, [chat, me?.userId, messages, onChangeText, onPressSendButton, sendDisabled, text]);
 
   return (
     <Screen title={other.name}>
