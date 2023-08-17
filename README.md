@@ -1,13 +1,26 @@
 # youngbinchat
+
 react_native_chat_app
 
-## setting
+## function
 
-헤르메스 OFF - 다른 패키지 설치시 충돌이 간간히 있기 때문에
+- 회원가입 / 로그인
+- 프로필 이미지 등록
+- 사용자 리스트
+- 채팅
+- 텍스트, 이미지, 오디오 메시지 전송
+- 메시지 읽음 표시
+- 푸시 알림
+- 멀티미디어 다루기 (이미지, 오디오 녹음 및 재생)
+- Firebase Cloud Messaging 이용한 푸시 노티피케이션 전송
 
+## ESLint
 
-## firebase
+- 코드의 문법적 오류 또는 안티 패턴 등을 검사하는 도구
+- 버그 가능성이 있는 코드를 사전에 수정할 수 있음
 
-firestore database 규칙 변경
+## Prettier
 
-allow read, write: if request.auth != null;
+- 작성된 코드를 일관된 스타일로 변환 시켜주는 도구
+- 개발자간에 같은 스타일로 코드를 작성 할 수 있음
+- 키보드 타이핑이 줄어듦
